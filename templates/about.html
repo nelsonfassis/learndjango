@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <h1> About Title </h1>
+
+        <p> {{ request.user }} </p>
+        <h2> {{ key1 }} </h2>
+        <h2> {{ key2 }} </h2>
+
+        <ul>
+        {% for value in key_list %}
+            <li> {{ forloop.counter }} - {{ value }}  </li>
+        {% endfor %}
+        </ul>
+
+{% endblock %}
