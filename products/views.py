@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product
-from .forms import ProductCreateForm, RawProductCreateForm
+from .forms import ProductCreateForm, RawProductCreateForm, ProductDeleteForm
 # Create your views here.
 def product_detail_view(request):
     obj = Product.objects.get(id=1)
@@ -26,8 +26,9 @@ def product_create_view(request):
 
     return render(request, "products/products_create.html", context)
 
-def product_edit_view(request):
-    obj = Product.objects.get(id=1)
+def product_edit_view(request, product_id):
+    # obj = Product.objects.get(id=product_id)
+    obj = get_object_or_404(Product,id=product_id)
     form = ProductCreateForm(request.POST or None, instance=obj)
     if form.is_valid():
         form.save()
@@ -39,18 +40,20 @@ def product_edit_view(request):
 
     return render(request, "products/products_create.html", context)
 
+def product_delete_view(request, product_id):
+    obj = get_object_or_404(Product,id=product_id)
+    if request.method == "POST":
+        obj.delete()
+        return redirect('../../../')
+    context = {
+        'object': obj
+    }
 
-# def product_create_view(request):
-#     form = RawProductCreateForm()
-#     if request.method == "POST":
-#         form = RawProductCreateForm(request.POST)
-#         if form.is_valid():
-#             print(form.cleaned_data)
-#             Product.objects.create(**form.cleaned_data)
-#         else:
-#             print(form.errors)
-                
-#     context = {
-#         "form": form
-#     }
-#     return render(request, "products/products_create.html", context)
+    return render(request, "products/products_delete.html", context)
+
+def product_list_view(request):
+    queryset = Product.objects.all()
+    context = {
+        "object_list": queryset
+    }
+    return render(request, "products/products_list.html", context)

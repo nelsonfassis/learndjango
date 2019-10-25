@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> Product Name: {{object.title}} </h1>
+    <p> 
+        {%if object.description %} 
+            {{ object.description }} 
+        {% else %} 
+            Description not availabe
+        {% endif %}
+    </p>
+<h3>{{ object.price }}</h3>
+<form action='.' method="POST"> {% csrf_token %}
+    <h1> Delete the Product? </h1>
+    <p><input type="submit" value="YES" /> <a href='../'> Cancel </a></p>
+
+</form>
+
+{% endblock content %}

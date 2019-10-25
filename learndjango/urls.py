@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from pages.views import home_view, contact_view, about_view
-from products.views import product_detail_view, product_create_view, product_edit_view
+from products.views import product_detail_view, product_create_view, product_edit_view, product_delete_view, product_list_view
 
 urlpatterns = [
     path('', home_view, name='home'),
@@ -25,6 +25,8 @@ urlpatterns = [
     path('about/', about_view, name='about'),
     path('product/', product_detail_view, name='product'),
     path('product_create/', product_create_view, name='product_create'),
-    path('product_edit/', product_edit_view, name='product_edit'),
+    path('product_edit/<int:product_id>/', product_edit_view, name='product_edit'),
+    path('product_list/', product_list_view, name='product_list'),
+    path('product_delete/<int:product_id>/', product_delete_view, name='product_delete'),
     path('admin/', admin.site.urls),
 ]

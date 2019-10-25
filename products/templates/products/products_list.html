@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% comment %} {{ object_list }} {% endcomment %}
+{% for instance in object_list  %}
+    <p><a href="/product_edit/{{instance.id}}">{{ instance.id }} - {{ instance.title}} - {{ instance.price}} </a></p>
+
+{% endfor %}
+
+
+{% endblock content %}
