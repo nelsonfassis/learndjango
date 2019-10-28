@@ -10,4 +10,13 @@
         {% endif %}
     </p>
 <h3>{{ object.price }}</h3>
+
+<p>
+    <a href="../edit/{{object.id}}">
+        <button type="button" class="btn btn-default" >Edit Product </button>
+    </a>
+    <a href='../delete/{{object.id}}'>
+        <button type="button" class="btn btn-danger" >Delete Product </button>
+    </a>
+ </p>
 {% endblock content %}
