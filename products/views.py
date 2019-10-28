@@ -2,9 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product
 from .forms import ProductCreateForm, RawProductCreateForm, ProductDeleteForm
 # Create your views here.
-def product_detail_view(request):
-    obj = Product.objects.get(id=1)
-    
+def product_detail_view(request, product_id):
+    obj = get_object_or_404(Product,id=product_id)
     context = {
         'object': obj
     }

@@ -4,7 +4,7 @@
 
 {% comment %} {{ object_list }} {% endcomment %}
 {% for instance in object_list  %}
-    <p><a href="/product_edit/{{instance.id}}">{{ instance.id }} - {{ instance.title}} - {{ instance.price}} </a></p>
+    <p><a href="{{ instance.get_absolute_url }}">{{ instance.id }} - {{ instance.title}} - {{ instance.price}} </a></p>
 
 {% endfor %}
 

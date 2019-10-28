@@ -1,12 +1,21 @@
 <div>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/product_list/">Product List</a></li>
-            <li><a href="/product_create/">Product Create</a></li>
-            <li><a href="/product_edit/">Product Edit</a></li>
-            <li><a href="/product_delete/">Product Delete</a></li>
-            
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="#">LearnDjango</a>
+        </div>
+        <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Products <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="/products/list/">Product List</a></li>
+                <li><a href="/products/create/">Product Create</a></li>
+                <li><a href="/products/edit/">Product Edit</a></li>
+                <li><a href="/products/delete/">Product Delete</a></li>
+            </ul>
+        </li>
         </ul>
+        </div>
     </nav>
 </div>
